@@ -10,7 +10,7 @@ class Register extends Component {
             password: '',
             confirmPassword: '',
             userName: '',
-            user: null,
+            user: null
         }
     }
 
@@ -36,7 +36,7 @@ class Register extends Component {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then((data) => {
                     const userId = data.user.uid
-                    // console.log(userId);
+                    console.log(userId);
 
                     const usersDirectory = firebase.database().ref(`users/${userId}`);
                     usersDirectory.set({
@@ -51,11 +51,14 @@ class Register extends Component {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
+
                 const userId = data.user.uid;
                 this.setState({
                     user: userId
                 })
             });
+
+        console.log(this.state.user);
     }
 
 
@@ -82,7 +85,7 @@ class Register extends Component {
             )
         } else if (this.state.showForm === "login") {
             form = (
-                <form onSubmit={this.logIn} action="">
+                <form onSubmit={this.login} action="">
                     <label htmlFor="email" className="floatingLabel">Email</label>
                     <input type="email" name="email" id="email" onChange={this.handleChange} required />
 
