@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import App from '../App';
+const { Provider, Consumer } = React.createContext();
 
 class Register extends Component {
     constructor() {
