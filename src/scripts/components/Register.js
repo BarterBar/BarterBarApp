@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import App from '../App';
+const { Provider, Consumer } = React.createContext();
 
 class Register extends Component {
     constructor() {
@@ -85,7 +87,7 @@ class Register extends Component {
             )
         } else if (this.state.showForm === "login") {
             form = (
-                <form onSubmit={this.login} action="">
+                <form onSubmit={this.logIn} action="">
                     <label htmlFor="email" className="floatingLabel">Email</label>
                     <input type="email" name="email" id="email" onChange={this.handleChange} required />
 
